@@ -1,5 +1,38 @@
 # Changelog for code-push-server
 
+## 在本地部署的修改
+
+### code push server 的修改
+
+1、因本地 mysql 版本高于作者指定版本，故将 package.json 中将 mysql2 版本升级为 2.2.5，如果是基于 docker 环境安装，则无需升级 mysql2 版本
+2、code push 时会导致 code-push-server 服务挂起，大概原因是目录定位不准确，需要修改 /core/utils/security.js 文件, 将 `relativePath = path.join('CodePush', matchresult[0])`  修改为 `relativePath = path.join("www", matchresult[0])`
+3、关于 config.js 的修改：
+ - storageDir: 需写一个具体的目录
+ - local 中的 downloadUrl 切记不要写 127.0.0.1，写内网的实际 IP
+ - tokenSecret 修改
+ - common 中 dataDir：需要写一个具体的目录地址
+
+
+### demo的配置修改
+1、index.html 中 meata 标签，可不修改，若修改则： <meta http-equiv="Content-Security-Policy" content="default-src * gap://ready file:; style-src 'self' 'unsafe-inline' *; script-src 'self' 'unsafe-inline' 'unsafe-eval' *; img-src * data: 'unsafe-inline'">  
+2、android:usesCleartextTraffic="true"
+3、config.xml
+```
+<platform name="android">
+    <allow-intent href="market:*" />
+    <preference name="CodePushDeploymentKey" value="cjfa8KXkcB2vBEZmqhO6aYv6gO4z4ksvOXqog" />
+    <preference name="CodePushServerUrl" value="http://192.168.13.169:3000/" />
+</platform>
+<platform name="ios">
+    <allow-intent href="itms:*" />
+    <allow-intent href="itms-apps:*" />
+    <preference name="CodePushDeploymentKey" value="jgXUoZAlORIxEjkxSDg3NBeMH3yN4ksvOXqog" />
+    <preference name="CodePushServerUrl" value="http://192.168.13.169:3000/" />
+</platform>
+```
+
+
+
 ## 0.5.x
 
 ## 新特性
