@@ -1,9 +1,6 @@
 # Changelog for code-push-server
-
 ## 在本地部署的修改
-
 ### code push server 的修改
-
 1、因本地 mysql 版本高于作者指定版本，故将 package.json 中将 mysql2 版本升级为 2.2.5，如果是基于 docker 环境安装，则无需升级 mysql2 版本
 2、code push 时会导致 code-push-server 服务挂起，大概原因是目录定位不准确，需要修改 /core/utils/security.js 文件, 将 `relativePath = path.join('CodePush', matchresult[0])`  修改为 `relativePath = path.join("www", matchresult[0])`
 3、关于 config.js 的修改：
@@ -11,7 +8,6 @@
  - local 中的 downloadUrl 切记不要写 127.0.0.1，写内网的实际 IP
  - tokenSecret 修改
  - common 中 dataDir：需要写一个具体的目录地址
-
 
 ### demo的配置修改
 1、index.html 中 meata 标签，可不修改，若修改则： <meta http-equiv="Content-Security-Policy" content="default-src * gap://ready file:; style-src 'self' 'unsafe-inline' *; script-src 'self' 'unsafe-inline' 'unsafe-eval' *; img-src * data: 'unsafe-inline'">  
