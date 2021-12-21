@@ -5,7 +5,7 @@ config.development = {
   // Config for database, only support mysql.
   db: {
     username: process.env.RDS_USERNAME || "root",
-    password: process.env.RDS_PASSWORD || "123456",
+    password: process.env.RDS_PASSWORD || "Aimysql@20211220",
     database: process.env.DATA_BASE || "codepush",
     host: process.env.RDS_HOST || "127.0.0.1",
     port: process.env.RDS_PORT || 3306,
@@ -60,7 +60,7 @@ config.development = {
     storageDir: process.env.STORAGE_DIR || "/Users/nnx/workspaces/storage",
     // Binary files download host address which Code Push Server listen to. the files storage in storageDir.
     downloadUrl:
-      process.env.LOCAL_DOWNLOAD_URL || "http://192.168.13.169:3000/download",
+      process.env.LOCAL_DOWNLOAD_URL || "http://192.168.13.32:3000/download",
     // public static download spacename.
     public: "/download",
   },
@@ -69,7 +69,7 @@ config.development = {
     // Generate using: https://www.grc.com/passwords.htm
     // tokenSecret: process.env.TOKEN_SECRET ||'INSERT_RANDOM_TOKEN_KEY'
     tokenSecret:
-      "w8b7hvIZZwJi6xNNORqFjtqFm3CpepBrtn7Wjf4fG23IPuE3D1WaJizBNbwOHae"
+      "wsXTuJNMgdNGncco6wvdKcXri6nQTOJppTGLq9sTsgfz7op7DLximjZoUnGW706",
   },
   common: {
     /*
